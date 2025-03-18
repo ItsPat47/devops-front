@@ -1,0 +1,11 @@
+Si déployé dans la VM, l'app n'est disponible qu'au sein de la VM
+Pour acceder depuis l'exterieur,
+pour ouvrir les ports d'écoute et rendre disponible le front à tout les appareils connecté au réseau:
+npm start -- --host 0.0.0.0
+
+
+L'installation de fastapi requière un environnement local. 
+utiliser
+source .venv/bin/activate
+
+pour activer l'environnement virtuel Python
