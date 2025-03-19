@@ -1,16 +1,25 @@
-import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import {useEffect, useState} from "react"
 
-function App() {
+
+function App(){
+  const [data, setData] = useState(null)
+
+  useEffect(() => {
+    const API_URL = process.env.REACT_APP_API_URL || "http://localhost:8000"; //recupérer url depuis .env
+    fetch(`${API_URL}/api/data`)
+    .then(response => response.json())
+    .then(data => setData(data.message))
+    .catch(error => console.error("Erreur API:", error));
+  }, []);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-          <p>It's working ! Welcome to the front</p>
-      </header>
+    <div>
+      <h1>Front React connecté à FastAPI</h1>
+      <p>Donnée du backend : {data}</p>
     </div>
   );
 }
+
 
 export default App;
