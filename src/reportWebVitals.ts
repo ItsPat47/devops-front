@@ -11,5 +11,12 @@ const reportWebVitals = (onPerfEntry?: ReportHandler) => {
     });
   }
 };
+export default reportWebVitals
 
-export default reportWebVitals;
+export function sendMetricsToBackend(metric: any) {
+  fetch('http://localhost:8080/metrics/client', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(metric),
+  });
+}
